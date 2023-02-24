@@ -39,8 +39,16 @@ public class Table {
         return isFull;
     }
 
+    public List<String> getMembers() {
+        return members;
+    }
+
     public int getCapacity() {
         return capacity;
+    }
+
+    public int getTableNumber() {
+        return tableNumber;
     }
 
     

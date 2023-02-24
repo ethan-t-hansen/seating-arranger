@@ -100,6 +100,7 @@ public class DataParser {
         ArrayList<String> arrlist = new ArrayList<String>(asList);
 
         return arrlist;
+        
     }
 
 }

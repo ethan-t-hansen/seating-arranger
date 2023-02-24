@@ -11,14 +11,6 @@ public class Preference {
         this.dislikes = dislikes;
     }
 
-    public void setLikes(ArrayList<String> newLikes) {
-        this.likes = newLikes;
-    }
-
-    public void setDislikes(ArrayList<String> newDislikes) {
-        this.dislikes = newDislikes;
-    }
-
     public ArrayList<String> getLikes() {
         return likes;
     }
