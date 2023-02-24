@@ -3,7 +3,10 @@ package com.seatarr;
 import java.io.IOException;
 import java.io.FileInputStream;
 import java.io.File;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Iterator;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -32,10 +35,10 @@ public class DataParser {
         return null;
     }
 
-    public HashSet<Person> readDataFromExcelFile(String excelFilePath)
+    public HashMap<String, Preference> readDataFromExcelFile(String excelFilePath)
             throws IOException {
 
-        HashSet<Person> attendees = new HashSet<Person>();
+        HashMap<String, Preference> attendees = new HashMap<String, Preference>();
 
         FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
 
@@ -53,7 +56,9 @@ public class DataParser {
 
             Iterator<Cell> cellIterator = nextRow.cellIterator();
 
-            Person p = new Person();
+            String name = "";
+            ArrayList<String> likes = new ArrayList<>();
+            ArrayList<String> dislikes = new ArrayList<>();
 
             while (cellIterator.hasNext()) {
                 Cell nextCell = cellIterator.next();
@@ -64,27 +69,37 @@ public class DataParser {
 
                     // Case 1 - Full name column
                     case 2:
-                        p.setName((String) getCellValue(nextCell));
+                        name = (String) getCellValue(nextCell);
                         break;
 
                     // Case 2 - Likes column
                     case 3:
-                        p.setLikes((String) getCellValue(nextCell));
+                        likes = stringToArrayList((String) getCellValue(nextCell));
                         break;
 
                     // Case 3 - Dislikes column
                     case 4:
-                        p.setDislikes((String) getCellValue(nextCell));
+                        dislikes = stringToArrayList((String) getCellValue(nextCell));
                         break;
                 }
             }
-            attendees.add(p);
+            Preference p = new Preference(likes, dislikes);
+            attendees.put(name, p);
         }
 
         workbook.close();
         inputStream.close();
 
         return attendees;
+    }
+
+    public ArrayList<String> stringToArrayList(String list) {
+        
+        List<String> asList = Arrays.asList(list.split("\\s*,\\s*"));
+
+        ArrayList<String> arrlist = new ArrayList<String>(asList);
+
+        return arrlist;
     }
 
 }

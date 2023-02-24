@@ -1,19 +1,39 @@
 package com.seatarr;
 
 import java.util.List;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Event {
 
-    private HashSet<Person> attendees;
+    private HashMap<String, Preference> attendees;
     private List<Table> tables;
 
-    public Event(HashSet<Person> guestList, List<Table> seating) {
-        attendees = guestList;
-        tables = seating;
+    public Event(HashMap<String, Preference> attendees, List<Table> tables) {
+        this.attendees = attendees;
+        this.tables = tables;
     }
 
-    public HashSet<Person> getGuestList() {
+    public void arrangeSeating() {
+        List<String> toSeat = new ArrayList<>(attendees.keySet());
+        int i = 0;
+        for (Table t : tables) {
+            while (!t.isFull() && i < toSeat.size()) {
+                for (int j = 0; j < t.getCapacity(); j++) {
+                    t.addMember(toSeat.get(i + j));
+                    i++;
+                }
+            }
+        }
+    }
+    
+    public void printSeating() {
+        for (Table t: tables) {
+            t.printMembers();
+        }
+    }
+
+    public HashMap<String, Preference> getGuestList() {
         return attendees;
     }
 

@@ -1,59 +1,60 @@
-package com.seatarr;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Arrays;
+// package com.seatarr;
+// import java.util.Set;
+// import java.util.HashSet;
+// import java.util.ArrayList;
+// import java.util.List;
+// import java.util.Arrays;
 
-public class Person {
+// public class Person {
 
-    private String fullName;
-    private String status;
-    private boolean isSeated;
-    private Table table;
-    private HashSet<String> likes;
-    private HashSet<String> dislikes;
+//     private String fullName;
+//     private String status;
+//     private boolean isSeated;
+//     private Table table;
+//     private HashSet<String> likes;
+//     private HashSet<String> dislikes;
 
-    public Person() {
-        likes = new HashSet<>();
-        dislikes = new HashSet<>();
-        isSeated = false;
-    }
+//     public Person() {
+//         likes = new HashSet<>();
+//         dislikes = new HashSet<>();
+//         isSeated = false;
+//     }
 
-    public void setName(String newName) {
-        this.fullName = newName;
-    }
+//     public void setName(String newName) {
+//         this.fullName = newName;
+//     }
 
-    public void setLikes(String likes) {
-        this.likes = stringToSet(likes);
-    }
+//     public void setLikes(String likes) {
+//         this.likes = stringToSet(likes);
+//     }
 
-    public void setDislikes(String dislikes) {
-        this.dislikes = stringToSet(dislikes);
-    }
+//     public void setDislikes(String dislikes) {
+//         this.dislikes = stringToSet(dislikes);
+//     }
 
-    public HashSet<String> stringToSet(String list) {
+//     public ArrayList<String> stringToArrayList(String list) {
         
-        List<String> asList = Arrays.asList(list.split("\\s*,\\s*"));
+//         List<String> asList = Arrays.asList(list.split("\\s*,\\s*"));
 
-        HashSet<String> set = new HashSet<String>(asList);
+//         ArrayList<String> arrlist = new ArrayList<String>(asList);
 
-        return set;
-    }
+//         return arrlist;
+//     }
 
-    public boolean isSeated() {
-        return this.isSeated;
-    }
+//     public boolean isSeated() {
+//         return this.isSeated;
+//     }
 
-    public String getName() {
-        return fullName;
-    } 
+//     public String getName() {
+//         return fullName;
+//     } 
 
-    public HashSet<String> getLikes() {
-        return likes;
-    }
+//     public HashSet<String> getLikes() {
+//         return likes;
+//     }
 
-    public HashSet<String> getDislikes() {
-        return likes;
-    }
+//     public HashSet<String> getDislikes() {
+//         return likes;
+//     }
     
-}
+// }

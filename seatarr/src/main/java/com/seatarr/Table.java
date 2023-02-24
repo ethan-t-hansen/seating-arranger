@@ -7,17 +7,40 @@ import java.util.ArrayList;
 public class Table {
 
     private boolean isFull;
-    private List<Person> members;
+    private int capacity;
+    private List<String> members;
     private int tableNumber;
 
-    public Table(int tabNum) {
-        tableNumber = tabNum;
+    public Table(int tableNumber, int capacity) {
+        this.tableNumber = tableNumber;
         isFull = false;
+        this.capacity = capacity;
         members = new ArrayList<>();
+    }
+
+    public void addMember(String m) {
+        if (!isFull) {   
+            members.add(m);
+        }
+        if (members.size() >= capacity) {
+            isFull = true;
+        }
+    }
+
+    public void printMembers() {
+        System.out.println("Table " + tableNumber + ": ");
+        for (String m : members) {
+            System.out.println(m);
+        }
+        System.out.println();
     }
 
     public boolean isFull() {
         return isFull;
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 
     
